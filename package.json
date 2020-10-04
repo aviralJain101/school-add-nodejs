@@ -1,7 +1,6 @@
 {
   "name": "school_admission_dev",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,5 +20,14 @@
   "devDependencies": {
     "env-cmd": "^10.1.0",
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviralJain101/school-add-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aviralJain101/school-add-nodejs/issues"
+  },
+  "homepage": "https://github.com/aviralJain101/school-add-nodejs#readme",
+  "description": ""
 }

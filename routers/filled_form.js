@@ -91,4 +91,34 @@ router.delete('/filledForm/:id',authUser.userAuth, async(req,res)=>{
     }
 });
 
+//get all filled form for a user
+router.get('/filledForm/user', authUser.userAuth, async(req, res)=>{
+    const _userId = req.user.id;
+    try{
+        const filledForms = await FilledForm.findAll({
+            where: {
+                userId: _userId
+            }
+        })
+        res.send(filledForms);
+    }catch(e){
+        res.status(440).send(e)
+    }
+})
+
+//get all filled forms for a school
+router.get('/filledForm/school', authSchool.schoolAuth, async(req,res)=>{
+    const _schoolId = req.school.id;
+    try{
+        const filledForms = await FilledForm.findAll({
+            where: {
+                schoolId: _schoolId
+            }
+        })
+        res.send(filledForms);
+    }catch(e){
+        res.status(440).send(e)
+    }
+})
+
 module.exports = router;

@@ -19,7 +19,7 @@ router.post('/school/form',authSchool.schoolAuth,async(req,res)=>{
     }
 });
 
-//update form
+//update form 
 router.patch('/school/form/:id',authSchool.schoolAuth,async(req,res)=>{
     const school = req.school;
     try{
@@ -32,5 +32,33 @@ router.patch('/school/form/:id',authSchool.schoolAuth,async(req,res)=>{
     }
 });
 
+//get all forms for a school
+router.get('/school/form/:schoolId', async(req,res)=>{
+    const schoolId = req.params.schoolId;
+    try{
+        const forms = await Form.findAll({
+            where: {
+                schoolId: schoolId
+            }
+        })
+        res.send(forms);
+    }catch(e){
+        res.status(440).send(e)
+    }
+})
+
+//get form by id;
+router.get('/school/form/:id', async(req,res)=>{
+    const id = req.params.id;
+    try{
+        const form = await Form.findByPk(id);
+        if(!form){
+            res.status(404).send('Form not found')
+        }
+        res.send(form);
+    }catch(e){
+        res.status(404).send(e);
+    }
+})
 
 module.exports = router;

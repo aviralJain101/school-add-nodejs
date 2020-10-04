@@ -26,4 +26,58 @@ router.post('/school/details',authSchool.schoolAuth,async(req,res)=>{
     }
 });
 
+//get school details by id; 
+router.get('school/details/:id', async(req,res)=>{
+    const id = req.params.id;
+    try{
+        const school = await Schooldetail.findByPk(id);
+        if(!school){
+            res.status(404).send('School Not found');
+        }
+        res.send(school);
+    }catch(e){
+        res.send(e);
+    }
+})
+
+//list of all the schools
+router.get('/school/list', async(req,res)=>{
+    try{
+        const schools = Schooldetail.findAll();
+        res.send(schools);
+    }catch(e){
+        res.status(440).send(e);
+    }
+})
+
+//list of all the schools which are active
+router.get('/school/list/active', async(req,res)=>{
+    try{
+        const schools = await Schooldetail.findAll({
+            where: {
+                isActive: 1
+            }
+        });
+        res.send(schools);
+    }catch(e){
+        res.status(440).send(e);
+    }
+})
+
+//get List of Schools according to city of User
+router.get('/school/list/:city', async(req, res)=>{
+    const city = req.params.city;
+    try{
+        const schools = await Schooldetail.findAll({
+            where: {
+                city: city,
+                isActive: 1
+            }
+        })
+        res.send(schools);
+    }catch(e){
+        res.status(440).send(e);
+    }
+})
+
 module.exports = router;

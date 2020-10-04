@@ -38,6 +38,10 @@ const Schooldetail = sequelize.define('schooldetail',{
     medium: {
         type: Sequelize.STRING,
         defaultValue: "English",
+    },
+    isActive: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1  //1 for active, 0 for not active, -1 for spam
     }
 });
 
