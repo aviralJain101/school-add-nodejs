@@ -45,25 +45,29 @@ School.hasMany(Form);
 Schooldetail.belongsTo(School, { constraints: true})
 School.hasOne(Schooldetail);
 
-sequelize
-  //.sync({force: true}) 
-  .sync()
-  .then(result => {
-    // School.create({
-    //   name: "Test1",
-    //   email:"test1@test.com",
-    //   password: "test1"
-    // }).then((school)=>{
-    //   school.createSchooldetail({
-    //     name: "Test School",
-    //     address: "testAdress",
-    //     fees: "20000"
-    //   })
-    // });
-    app.listen(port,()=>{
-      console.log('Server is up on port',port)
-    })  
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// sequelize
+//   //.sync({force: true}) 
+//   .sync()
+//   .then(result => {
+//     // School.create({
+//     //   name: "Test1",
+//     //   email:"test1@test.com",
+//     //   password: "test1"
+//     // }).then((school)=>{
+//     //   school.createSchooldetail({
+//     //     name: "Test School",
+//     //     address: "testAdress",
+//     //     fees: "20000"
+//     //   })
+//     // });
+//     app.listen(port,()=>{
+//       console.log('Server is up on port',port)
+//     })  
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
+app.listen(port,()=>{
+  console.log('Server is up on port',port)
+})
