@@ -15,7 +15,7 @@ const formRouter = require('./routers/form');
 const filledFormRouter = require('./routers/filled_form');
 
 const app = express();
-const port = process.env.PORT || 3000; 
+const port = process.env.PORT
 
 app.use(express.json());//parse the incoming json data
 app.use(schoolRouter);
