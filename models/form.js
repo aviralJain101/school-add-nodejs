@@ -13,7 +13,7 @@ const Form = sequelize.define('form',{
         type: Sequelize.STRING,
         allowNull: false,
     },
-    class: {
+    clas: {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
