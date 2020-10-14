@@ -27,7 +27,7 @@ router.post('/school/details',authSchool.schoolAuth,async(req,res)=>{
 });
 
 //get school details by id; 
-router.get('school/details/:id', async(req,res)=>{
+router.get('/school/details/:id', async(req,res)=>{
     const id = req.params.id;
     try{
         const school = await Schooldetail.findByPk(id);
