@@ -19,7 +19,15 @@ const FilledForm = sequelize.define('filledForm',{
     approval: {
         type: Sequelize.INTEGER,
         defaultValue: 0  //-1 if discarded  0 pending  1 approved
-    }
+    },
+    schoolName: {
+        type: Sequelize.STRING,
+        allowNull: false,
+    },
+    clas: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
 });
 
 module.exports = FilledForm;

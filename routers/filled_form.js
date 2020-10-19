@@ -22,7 +22,9 @@ router.post('/filledForm/:id', authUser.userAuth, async(req,res)=>{
             formData: req.body.formData,
             feePaid: req.body.feePaid,
             formId: _id,
-            schoolId: form.schoolId, 
+            schoolId: form.schoolId,
+            schoolName: req.body.schoolName,
+            clas: req.body.clas, 
         })
         res.send(filledForm);
     }catch(e){
