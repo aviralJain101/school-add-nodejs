@@ -15,12 +15,12 @@ router.post('/school/details',authSchool.schoolAuth,async(req,res)=>{
         if(!schoolDetail){
             const detail = await school.createSchooldetail(req.body);
             console.log("created school details");
-            res.send(detail);
+            res.status(201).send(detail);
         }
         const detail = await Schooldetail.update(req.body,{
             where: {schoolId: school.id}
         });
-        res.send(detail);
+        res.status(204).send(detail);
     }catch(e){
         res.status(440).send(e);
     }
