@@ -26,6 +26,24 @@ router.post('/school/details',authSchool.schoolAuth,async(req,res)=>{
     }
 });
 
+//get school details by schoolId;
+router.get('/school/details', authSchool.schoolAuth, async(req, res)=>{
+    const schoolId = req.school.id;
+    try{
+        const school = await Schooldetail.findOne({
+            where: {
+                schoolId: schoolId
+            }
+        })
+        if(!school){
+            res.status(404).send('School Details not found')
+        }
+        res.send(school);
+    }catch(e){
+        res.status(440).send(e);
+    }
+} )
+
 //get school details by id; 
 router.get('/school/details/:id', async(req,res)=>{
     const id = req.params.id;
