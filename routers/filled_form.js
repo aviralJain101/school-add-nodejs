@@ -110,14 +110,14 @@ router.get('/filledForm/user', authUser.userAuth, async(req, res)=>{
 
 //get all filled forms for a school
 router.get('/filledForm/school', authSchool.schoolAuth, async(req,res)=>{
-    const _schoolId = req.school.id;
+    const schoolId = req.school.id;
     try{
-        const filledForms = await FilledForm.findAll({
+        const forms = await FilledForm.findAll({
             where: {
-                schoolId: _schoolId
+                schoolId: schoolId
             }
         })
-        res.send(filledForms);
+        res.send(forms);
     }catch(e){
         res.status(440).send(e)
     }
