@@ -48,7 +48,7 @@ router.get('/school/form/:schoolId', async(req,res)=>{
 })
 
 //get all forms for a school by token
-router.get('/school/form/school', authSchool.schoolAuth, async(req,res)=>{
+router.get('/school/forms/school', authSchool.schoolAuth, async(req,res)=>{
     const schoolId = req.school.id;
     try{
         const forms = await Form.findAll({
