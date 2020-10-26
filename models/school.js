@@ -23,6 +23,26 @@ const School = sequelize.define('school',{
     name: Sequelize.STRING,
     state: Sequelize.STRING,
     city: Sequelize.STRING,
+    accountNumber: {
+        type: Sequelize.STRING,
+        //allowNull: false
+    },
+    ifscCode: {
+        type: Sequelize.STRING,
+        //allowNull: false
+    },
+    accountName: {
+        type: Sequelize.STRING,
+        //allowNull: false
+    },
+    bankLocation: {
+        type: Sequelize.STRING,
+        //allowNull: false
+    },
+    approval: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    }
 },{
     hooks: {
         beforeCreate: (user) => {
