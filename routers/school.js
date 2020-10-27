@@ -11,7 +11,8 @@ router.post('/school/register',async(req,res)=>{
     try{
         const school = await School.create(req.body);
         const token = auth.generateAuthToken(school);
-        res.status(201).send({token});
+        const approval = school.approval;
+        res.status(201).send({token, approval});
     }catch(e){
         res.status(400).send(e);
     }
@@ -21,7 +22,8 @@ router.post('/school/login',async(req,res)=>{
     try{
         const school = await authSchool.findByCredentials(req.body.email, req.body.password);
         const token = auth.generateAuthToken(school);
-        res.send({token});
+        const approval = school.approval;
+        res.status(201).send({token, approval});
     }catch(e){
         res.status(400).send(e);
     }
