@@ -43,5 +43,14 @@ router.patch('/school/approval/:id', async(req,res)=>{
     }catch(e){res.status(440).send(e);}
 })
 
+// router.get('/hello', async(req,res)=>{
+//     try{
+//         const schools = await School.findAll();
+//         console.log(schools);
+//         res.send(schools);
+//     }catch(e){
+//         res.status(440).send(e);
+//     }
+// })
 
 module.exports = router;

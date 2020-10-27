@@ -61,7 +61,7 @@ router.get('/school/details/:id', async(req,res)=>{
 //list of all the schools
 router.get('/school/list', async(req,res)=>{
     try{
-        const schools = Schooldetail.findAll();
+        const schools = await Schooldetail.findAll();
         res.send(schools);
     }catch(e){
         res.status(440).send(e);
