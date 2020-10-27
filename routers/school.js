@@ -29,5 +29,19 @@ router.post('/school/login',async(req,res)=>{
     }
 })
 
+router.patch('/school/approval/:id', async(req,res)=>{
+    const _id = req.params.id;
+    try{
+        const update = await School.update({
+            approval: req.body.approval,
+        },{
+            where:{
+                id: _id,
+            }
+        })
+        res.send(update);
+    }catch(e){res.status(440).send(e);}
+})
+
 
 module.exports = router;
