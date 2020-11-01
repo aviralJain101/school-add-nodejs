@@ -13,16 +13,20 @@ const schooldetailRouter = require('./routers/school_details');
 const userRouter = require('./routers/user');
 const formRouter = require('./routers/form');
 const filledFormRouter = require('./routers/filled_form');
+const photoRouter = require('./routers/photoes');
 
 const app = express();
 const port = process.env.PORT
 
 app.use(express.json());//parse the incoming json data
+
+//routers
 app.use(schoolRouter);
 app.use(schooldetailRouter);
 app.use(userRouter);
 app.use(formRouter);
 app.use(filledFormRouter);
+app.use(photoRouter);
 
 //associations
 //user to filled form 

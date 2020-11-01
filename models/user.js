@@ -23,6 +23,7 @@ const User = sequelize.define('user',{
     name: Sequelize.STRING,
     state: Sequelize.STRING,
     city: Sequelize.STRING,
+    profilePhoto: Sequelize.STRING
 },{
     hooks: {
         beforeCreate: (user) => {
