@@ -14,7 +14,7 @@ router.post('/photo/school', authSchool.schoolAuth, async(req, res) => {
     try{
         var photoUrls = [];
         photoUrls = req.body.photoUrls;
-        for(var i=0;i<photoUrls.length;i++){
+        for(var i=0 ; i<photoUrls.length ; i++){
             const photo = await Photo.create({
                 by: 0,
                 schoolName: school.name,
