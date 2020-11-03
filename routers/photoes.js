@@ -13,6 +13,7 @@ router.post('/photo/school', authSchool.schoolAuth, async(req, res) => {
     const school = req.school;
     try{
         var photoUrls = [];
+        var response = [];
         photoUrls = req.body.photoUrls;
         for(var i=0 ; i<photoUrls.length ; i++){
             const photo = await Photo.create({
@@ -21,8 +22,9 @@ router.post('/photo/school', authSchool.schoolAuth, async(req, res) => {
                 schoolId: school.id,
                 photoUrl: req.body.photoUrls[i]
             })
+            response.push(photo);
         }
-        res.send(photoUrls);
+        res.send(response);
     }catch(e){
         res.status(440).send(e);
     }
@@ -38,12 +40,12 @@ router.get('/photo/school', authSchool.schoolAuth, async(req, res) => {
                 by: 0
             }
         })
-        //console.log(Array.isArray(photo));
-        var urls = [];
-        for(var i=0;i<photo.length;i++){
-            urls.push(photo[i].photoUrl);
-        }
-        res.send(urls);
+        // //console.log(Array.isArray(photo));
+        // var urls = [];
+        // for(var i=0;i<photo.length;i++){
+        //     urls.push(photo[i].photoUrl);
+        // }
+        res.send(photo);
     }catch(e){
         res.status(404).send(e);
     }
