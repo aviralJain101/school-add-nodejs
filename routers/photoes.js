@@ -13,13 +13,17 @@ const router = new express.Router();
 router.post('/photo/school', authSchool.schoolAuth, async(req, res) => {
     const school = req.school;
     try{
-        const photo = await Photo.create({
-            by: 0,
-            schoolName: school.name,
-            schoolId: school.id,
-            photoUrl: req.body.photoUrl
-        })
-        res.send(photo.photoUrl);
+        var photoUrls = [];
+        photoUrls = req.body.photoUrls;
+        for(var i=0;i<photoUrls.length;i++){
+            const photo = await Photo.create({
+                by: 0,
+                schoolName: school.name,
+                schoolId: school.id,
+                photoUrl: req.body.photoUrls[i]
+            })
+        }
+        res.send(photoUrls);
     }catch(e){
         res.status(440).send(e);
     }
@@ -35,7 +39,7 @@ router.get('/photo/school', authSchool.schoolAuth, async(req, res) => {
                 by: 0
             }
         })
-        console.log(Array.isArray(photo));
+        //console.log(Array.isArray(photo));
         var urls = [];
         for(var i=0;i<photo.length;i++){
             urls.push(photo[i].photoUrl);
