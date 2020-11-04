@@ -30,13 +30,34 @@ router.post('/photo/school', authSchool.schoolAuth, async(req, res) => {
     }
 })
 
-//get all photo from School
+//get all photo from School with token
 router.get('/photo/school', authSchool.schoolAuth, async(req, res) => {
     const school = req.school;
     try{
         const photo = await Photo.findAll({
             where: {
                 schoolId: school.id,
+                by: 0
+            }
+        })
+        // //console.log(Array.isArray(photo));
+        // var urls = [];
+        // for(var i=0;i<photo.length;i++){
+        //     urls.push(photo[i].photoUrl);
+        // }
+        res.send(photo);
+    }catch(e){
+        res.status(404).send(e);
+    }
+})
+
+//get photo of school with schoolId
+router.get('/photo/school/:id', async(req, res) => {
+    const _id = req.params.id;
+    try{
+        const photo = await Photo.findAll({
+            where: {
+                schoolId: _id,
                 by: 0
             }
         })
