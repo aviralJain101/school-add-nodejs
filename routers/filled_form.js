@@ -71,6 +71,15 @@ router.patch('/filledForm/school/:id',authSchool.schoolAuth, async(req,res)=>{
                 schoolId: req.school.id
             }
         })
+        if(req.body.approval == 1){
+            const filledForm = await FilledForm.findByPk(_id);
+            const _formId = filledForm.formId;
+            await Form.decrement('availableSeats', { where: { id: _formId }});
+            // const form  = await Form.findByPk(_formId);
+            // const temp = form.availableSeats;
+            // form.availableSeats = temp-1;
+            // await form.save();
+        }
         res.send(newFilledForm);
     }catch(e){
         res.send(e);
