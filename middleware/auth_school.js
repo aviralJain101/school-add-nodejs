@@ -7,13 +7,10 @@ const School = require('../models/school');
 const schoolAuth = async(req,res,next)=>{
     try{
         const token = req.header('Authorization').replace('Bearer ','');
-        //console.log(token);
         const decoded = jwt.verify(token,'wave');
-        //console.log(decoded.pk); 
         const school = await School.findByPk(decoded.pk);
-        //console.log(school);
         if(!school){
-            throw new Error();
+            throw new Error("No school Exits!");
         }
         req.token = token;
         req.school = school;
@@ -23,7 +20,7 @@ const schoolAuth = async(req,res,next)=>{
     }
 }
 
-//general function
+
 const findByCredentials = async(email,password)=>{
     try{
         const school = await School.findOne({where: {email : email}});
